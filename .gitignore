@@ -10,3 +10,6 @@ Thumbs.db
 
 # Node (if npx skills generates anything)
 node_modules/
+
+# Orchestration state
+.omc/
