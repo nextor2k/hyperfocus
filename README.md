@@ -1,48 +1,175 @@
-# Hyperfocus
+<h1 align="center">Hyperfocus</h1>
 
-**ADHD-friendly output formatting for Claude Code.**
+<p align="center">
+  <strong>Your brain works differently. Your tools should too.</strong>
+</p>
 
-Hyperfocus restructures AI responses so your brain can lock in. Not fewer words — better structure.
+<p align="center">
+  <img src="https://img.shields.io/badge/ADHD-friendly-7C3AED?style=flat" alt="ADHD Friendly">
+  <img src="https://img.shields.io/badge/evidence-based-0EA5E9?style=flat" alt="Evidence Based">
+  <img src="https://img.shields.io/github/stars/nextor2k/hyperfocus?style=flat&color=7C3AED" alt="Stars">
+  <img src="https://img.shields.io/github/last-commit/nextor2k/hyperfocus?style=flat" alt="Last Commit">
+  <img src="https://img.shields.io/github/license/nextor2k/hyperfocus?style=flat" alt="License">
+</p>
 
-Built on evidence-based cognitive accessibility research from W3C, ATG Publishing, and peer-reviewed neuroscience.
+---
+
+Hyperfocus restructures Claude's output so your brain can lock in. Not fewer words — **better structure.**
+
+```bash
+claude plugin marketplace add nextor2k/hyperfocus
+```
+
+Then type `/hyperfocus` in any conversation. Done.
+
+> [!TIP]
+> Already using hyperfocus? Switch modes anytime: `/hyperfocus clean`, `/hyperfocus flow`, or `/hyperfocus zen`.
 
 ---
 
 ## What It Does
 
-Hyperfocus changes **how** Claude presents information — not what it says.
+Hyperfocus changes **how** Claude talks to you.
 
-Every response gets restructured with these principles:
+Every response gets:
 
-- **Front-loaded answers** — the key point comes first, context after
-- **Visual hierarchy** — descriptive subheadings, bold key terms, clear breaks
-- **Chunked content** — one idea per paragraph, short sentences, bullet lists
-- **Progressive disclosure** — essential info first, details on demand
+- **Answer first** — key point up top, context after
+- **Clear sections** — subheadings you can scan in 2 seconds
+- **Short chunks** — one idea per paragraph, max 3 sentences
+- **Lists over walls** — bullet points instead of dense prose
 
-The result: output your brain can scan, absorb, and act on.
+> [!IMPORTANT]
+> Hyperfocus doesn't dumb anything down. Same depth, same technical accuracy — just structured so your brain can absorb it.
 
 ---
 
-## Why This Exists
+## Three Modes
 
-ADHD isn't a deficit to work around. **Hyperfocus is the superpower.** This plugin removes the friction that prevents it from engaging.
+Pick your level of structure. Switch anytime with `/hyperfocus clean|flow|zen`.
 
-The research backs this up:
+### Clean
 
-- **Sentence length matters.** Comprehension drops sharply past 20 words per sentence. Hyperfocus targets 15, caps at 25.
-- **Chunking is the #1 recommendation.** Adults with ADHD show reduced processing capacity for competing information streams. Sequential chunks directly address this. *(PMC6996017)*
-- **Front-loading works.** ADHD readers may not reach the end. The answer belongs at the top. *(W3C COGA)*
-- **Visual hierarchy enables re-entry.** After an attention break, a good subheading lets you re-orient in under 2 seconds. *(ATG Publishing)*
+**For:** code reviews, quick answers, PR descriptions.
+
+Light touch. Shorter paragraphs, front-loaded points, bullet lists. Professional tone stays intact.
+
+### Flow *(default)*
+
+**For:** learning, debugging, technical explanations.
+
+Full structure. Each section follows **What → Why → How**. Recap sentences at the end of dense blocks. Subheadings every 2–3 paragraphs so you can find your place after a break.
+
+### Zen
+
+**For:** dense docs, architecture discussions, long sessions.
+
+Maximum scaffolding. **TL;DR at the top** of every response. Almost everything in lists or tables. Every section stands alone — jump in anywhere.
+
+> [!NOTE]
+> Mode persists for the full session. You don't need to re-activate it each turn.
+
+---
+
+## Before & After
+
+> [!IMPORTANT]
+> Same information. Same depth. Just structured differently.
+
+<table>
+<tr>
+<th width="50%">Default Claude</th>
+<th width="50%">With Hyperfocus (flow)</th>
+</tr>
+<tr>
+<td>
+
+The `useMemo` hook in React is used to memoize expensive computations so that they are only recalculated when their dependencies change. This is particularly useful when you have a component that re-renders frequently but has some computation that doesn't need to run on every render. Without `useMemo`, React would recalculate the value on every render, which could lead to performance issues. You should use it when you have computationally expensive operations that depend on specific props or state values, but be careful not to overuse it as the memoization itself has a small cost.
+
+</td>
+<td>
+
+**`useMemo` prevents unnecessary recalculation on re-renders.**
+
+**What It Does**
+
+It caches a computed value. React only recalculates when dependencies change.
+
+**When To Use It**
+
+Use `useMemo` when:
+
+- The computation is **expensive** (sorting, filtering, complex math)
+- The component **re-renders frequently**
+- The result **depends on specific props or state**
+
+**Watch Out**
+
+Don't overuse it. Memoization has a small cost. Only apply it where you can measure a difference.
+
+</td>
+</tr>
+</table>
+
+<details>
+<summary><strong>See the same example in Zen mode</strong></summary>
+
+<br>
+
+<table>
+<tr>
+<th width="50%">Default Claude</th>
+<th width="50%">With Hyperfocus (zen)</th>
+</tr>
+<tr>
+<td>
+
+The `useMemo` hook in React is used to memoize expensive computations so that they are only recalculated when their dependencies change. This is particularly useful when you have a component that re-renders frequently but has some computation that doesn't need to run on every render. Without `useMemo`, React would recalculate the value on every render, which could lead to performance issues. You should use it when you have computationally expensive operations that depend on specific props or state values, but be careful not to overuse it as the memoization itself has a small cost.
+
+</td>
+<td>
+
+**TL;DR:** `useMemo` caches expensive computations. Only recalculates when dependencies change.
+
+**What**
+- **Caches** a computed value between re-renders
+- **Recalculates** only when dependencies change
+
+**When**
+- **Expensive** computations (sort, filter, math)
+- **Frequent** re-renders
+- Result **depends on** specific props/state
+
+**Caution**
+- Memoization has a **small cost**
+- Only use where you can **measure** improvement
+
+</td>
+</tr>
+</table>
+
+</details>
 
 ---
 
 ## Install
 
-**Claude Code** (recommended):
+> [!TIP]
+> The marketplace is the easiest way to install. One command and you're done.
+
+**Claude Code marketplace** (recommended):
+
+```bash
+claude plugin marketplace add nextor2k/hyperfocus
+```
+
+**Or install the skill directly:**
 
 ```bash
 npx skills add nextor2k/hyperfocus
 ```
+
+<details>
+<summary><strong>Other agents (Codex, GitHub Copilot, manual)</strong></summary>
 
 **Codex:**
 
@@ -56,143 +183,74 @@ npx skills add nextor2k/hyperfocus -a codex
 npx skills add nextor2k/hyperfocus -a github-copilot
 ```
 
-**Manual install:** Clone this repo and copy the `skills/hyperfocus/` directory into your project's skills folder.
+**Manual:** Clone this repo. Copy `skills/hyperfocus/` into your project's skills folder.
+
+</details>
 
 ---
 
 ## Usage
 
-Activate hyperfocus in any conversation:
+| Action | Command |
+|---|---|
+| **Activate** | `/hyperfocus` |
+| **Switch mode** | `/hyperfocus clean` or `flow` or `zen` |
+| **Turn off** | `stop hyperfocus` |
 
-```
-/hyperfocus
-```
-
-Switch between modes:
-
-```
-/hyperfocus clean
-/hyperfocus flow
-/hyperfocus zen
-```
-
-Turn it off:
-
-```
-stop hyperfocus
-```
-
-You can also activate it naturally by saying **"focus mode"**, **"adhd mode"**, or **"adhd friendly"** in your prompt.
-
----
-
-## Modes
-
-Hyperfocus has three intensity levels. Each adds more structure.
-
-| | **clean** | **flow** *(default)* | **zen** |
-|---|---|---|---|
-| **Paragraphs** | Max 4 sentences | Max 3 sentences | Max 2 sentences |
-| **Subheadings** | Every 4–5 ¶ | Every 2–3 ¶ | Every 1–2 ¶ |
-| **Lists** | Enumerable content | + comparisons | Nearly everything |
-| **Bold** | Key terms | + actions | + all concepts |
-| **Structure** | Natural + breaks | What → Why → How | TL;DR at top |
-| **Recap** | — | Dense sections | Every section |
-
-**Pick your mode based on the task:**
-
-- **clean** — Reading code reviews, PR descriptions, quick answers. Professional tone, less noise.
-- **flow** — Learning new concepts, debugging, technical explanations. Full structure without overload.
-- **zen** — Dense documentation, architecture discussions, long sessions. Maximum scaffolding.
-
----
-
-## Before & After
-
-### Default Claude Response
-
-> The `useMemo` hook in React is used to memoize expensive computations so that they are only recalculated when their dependencies change. This is particularly useful when you have a component that re-renders frequently but has some computation that doesn't need to run on every render. Without `useMemo`, React would recalculate the value on every render, which could lead to performance issues. You should use it when you have computationally expensive operations that depend on specific props or state values, but be careful not to overuse it as the memoization itself has a small cost.
-
-### With Hyperfocus (flow)
-
-> **`useMemo` prevents unnecessary recalculation on re-renders.**
->
-> ### What It Does
->
-> It caches a computed value. React only recalculates when dependencies change.
->
-> ### When To Use It
->
-> Use `useMemo` when:
->
-> - The computation is **expensive** (sorting, filtering, complex math)
-> - The component **re-renders frequently**
-> - The result **depends on specific props or state**
->
-> ### Watch Out
->
-> Don't overuse it. Memoization itself has a small cost. Only apply it where you can measure a difference.
-
-### With Hyperfocus (zen)
-
-> **TL;DR:** `useMemo` caches expensive computations. Only recalculates when dependencies change.
->
-> ---
->
-> ### What
->
-> - **Caches** a computed value between re-renders
-> - **Recalculates** only when dependencies change
->
-> ### When
->
-> - **Expensive** computations (sort, filter, math)
-> - **Frequent** re-renders
-> - Result **depends on** specific props/state
->
-> ### Caution
->
-> - Memoization has a **small cost**
-> - Only use where you can **measure** improvement
+You can also say **"focus mode"**, **"adhd mode"**, or **"adhd friendly"** in your prompt.
 
 ---
 
 ## How It Works
 
-Hyperfocus is a **skill** — a set of formatting instructions injected into Claude's context when activated. No code, no hooks, no build step.
+Hyperfocus is a **skill** — formatting rules that load into Claude's context when activated.
 
-The SKILL.md file contains evidence-based rules that reshape how Claude structures its prose. Code blocks, error messages, git commits, and PRs are left untouched — only explanatory text gets restructured.
+No code. No hooks. No build step. One file of instructions that reshapes how Claude writes prose.
+
+> [!IMPORTANT]
+> Code blocks, error messages, commits, and PRs stay untouched. Only explanatory text gets restructured.
 
 ---
 
 ## Supported Agents
 
-Hyperfocus works with any agent that supports the skills/plugin system:
-
-- **Claude Code** — primary target, fully tested
-- **Codex** — supported via plugin manifest
+- **Claude Code** — fully tested, mode persists all session
+- **Codex** — supported, mode persists all session
 - **GitHub Copilot** — supported via npx skills
 
-**Persistence note:** Mode persists for the full session in Claude Code and Codex. Some agents (Opencode, omp) may require re-activation each turn. This is an agent-level limitation, not a hyperfocus limitation.
+> [!WARNING]
+> Some agents (Opencode, omp) may need re-activation each turn. That's an agent limitation, not a hyperfocus one.
 
 ---
 
-## Research
+## The Research Behind It
 
-The formatting rules in Hyperfocus are derived from these sources:
+> [!NOTE]
+> These aren't opinions. Every rule in Hyperfocus comes from peer-reviewed research or published accessibility standards.
 
-- [W3C COGA — Making Content Usable for People with Cognitive and Learning Disabilities](https://www.w3.org/TR/coga-usable/) (2021)
-- [ATG Publishing — ADHD Friendly Publishing Standards](https://atgpublishing.com/adhd-publishing/)
-- [PMC — Constraints on Information Processing Capacity in Adults with ADHD](https://pmc.ncbi.nlm.nih.gov/articles/PMC6996017/) (2020)
-- [MDN — Creating Effective Technical Documentation](https://developer.mozilla.org/en-US/blog/technical-writing/)
-- [Readability Guidelines — Simple Sentences](https://readabilityguidelines.co.uk/clear-language/simple-sentences/) (Oxford Guide to Plain English)
-- [WCAG 2.2 — Cognitive Accessibility](https://www.w3.org/WAI/cognitive/) (2023)
+| Principle | What the research says | Source |
+|---|---|---|
+| **Short sentences** | Comprehension drops sharply past 20 words | Oxford/Plain English |
+| **Chunking** | ADHD brains process sequential chunks better than parallel info | [PMC6996017](https://pmc.ncbi.nlm.nih.gov/articles/PMC6996017/) |
+| **Front-loading** | ADHD readers may not reach the end — answer goes first | [W3C COGA](https://www.w3.org/TR/coga-usable/) |
+| **Visual hierarchy** | Good subheadings enable re-entry in under 2 seconds | [ATG Publishing](https://atgpublishing.com/adhd-publishing/) |
+| **Blank lines** | Walls of text trigger task abandonment | [ATG Level 1](https://atgpublishing.com/adhd-publishing/) |
+
+Full sources: [W3C COGA](https://www.w3.org/TR/coga-usable/) ・ [ATG ADHD Standards](https://atgpublishing.com/adhd-publishing/) ・ [WCAG Cognitive](https://www.w3.org/WAI/cognitive/) ・ [MDN Writing Guide](https://developer.mozilla.org/en-US/blog/technical-writing/) ・ [Readability Guidelines](https://readabilityguidelines.co.uk/clear-language/simple-sentences/)
+
+---
+
+## Why "Hyperfocus"?
+
+ADHD isn't a deficit to work around. **Hyperfocus is the superpower.**
+
+This plugin removes the friction that blocks it from engaging. When information is structured right, your brain locks in — not because it was forced to, but because nothing got in the way.
 
 ---
 
 ## Contributing
 
-Contributions are welcome. If you have ideas for improving ADHD-friendly formatting — especially if you have ADHD yourself — please open an issue or PR.
+If you have ideas for better ADHD-friendly formatting — **especially if you have ADHD yourself** — open an issue or PR.
 
 ---
 
