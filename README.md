@@ -18,6 +18,7 @@ Hyperfocus restructures Claude's output so your brain can lock in. Not fewer wor
 
 ```bash
 claude plugin marketplace add nextor2k/hyperfocus
+claude plugin install hyperfocus@hyperfocus
 ```
 
 Then type `/hyperfocus` in any conversation. Done.
@@ -154,12 +155,13 @@ The `useMemo` hook in React is used to memoize expensive computations so that th
 ## Install
 
 > [!TIP]
-> The marketplace is the easiest way to install. One command and you're done.
+> The marketplace is the easiest way to install. Two commands and you're done.
 
 **Claude Code marketplace** (recommended):
 
 ```bash
 claude plugin marketplace add nextor2k/hyperfocus
+claude plugin install hyperfocus@hyperfocus
 ```
 
 **Or install the skill directly:**
