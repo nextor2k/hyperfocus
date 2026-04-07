@@ -23,9 +23,6 @@ claude plugin install hyperfocus@hyperfocus
 
 Then type `/hyperfocus` in any conversation. Done.
 
-> [!TIP]
-> Already using hyperfocus? Switch modes anytime: `/hyperfocus clean`, `/hyperfocus flow`, or `/hyperfocus zen`.
-
 ---
 
 ## What It Does
@@ -36,11 +33,11 @@ Every response gets:
 
 - **Answer first** — key point up top, context after
 - **Clear sections** — subheadings you can scan in 2 seconds
-- **Short chunks** — one idea per paragraph, max 3 sentences
+- **Short chunks** — one idea per paragraph, short sentences
 - **Lists over walls** — bullet points instead of dense prose
 
 > [!IMPORTANT]
-> Hyperfocus doesn't dumb anything down. Same depth, same technical accuracy — just structured so your brain can absorb it.
+> Same depth. Same technical accuracy. Just structured so your brain can absorb it.
 
 ---
 
@@ -52,39 +49,44 @@ Pick your level of structure. Switch anytime with `/hyperfocus clean|flow|zen`.
 
 **For:** code reviews, quick answers, PR descriptions.
 
-Light touch. Shorter paragraphs, front-loaded points, bullet lists. Professional tone stays intact.
+Shorter paragraphs, front-loaded points, bullet lists. Professional tone stays intact.
 
 ### Flow *(default)*
 
 **For:** learning, debugging, technical explanations.
 
-Full structure. Each section follows **What → Why → How**. Recap sentences at the end of dense blocks. Subheadings every 2–3 paragraphs so you can find your place after a break.
+Each section follows **What → Why → How**. Subheadings every 2–3 paragraphs for easy re-entry after breaks.
 
 ### Zen
 
 **For:** dense docs, architecture discussions, long sessions.
 
-Maximum scaffolding. **TL;DR at the top** of every response. Almost everything in lists or tables. Every section stands alone — jump in anywhere.
-
-> [!NOTE]
-> Mode persists for the full session. You don't need to re-activate it each turn.
+**TL;DR at the top** of every response. Almost everything in lists or tables. Every section stands alone.
 
 ---
 
 ## Before & After
 
-> [!IMPORTANT]
-> Same information. Same depth. Just structured differently.
+This is what the same Claude response looks like **without** and **with** hyperfocus.
+
+**Without hyperfocus (default Claude):**
+
+> The `useMemo` hook in React is used to memoize expensive computations so that they are only recalculated when their dependencies change. This is particularly useful when you have a component that re-renders frequently but has some computation that doesn't need to run on every render. Without `useMemo`, React would recalculate the value on every render, which could lead to performance issues. You should use it when you have computationally expensive operations that depend on specific props or state values, but be careful not to overuse it as the memoization itself has a small cost.
+
+**With hyperfocus — all three modes side by side:**
 
 <table>
 <tr>
-<th width="50%">Default Claude</th>
-<th width="50%">With Hyperfocus (flow)</th>
+<th width="33%">Clean</th>
+<th width="34%">Flow</th>
+<th width="33%">Zen</th>
 </tr>
 <tr>
 <td>
 
-The `useMemo` hook in React is used to memoize expensive computations so that they are only recalculated when their dependencies change. This is particularly useful when you have a component that re-renders frequently but has some computation that doesn't need to run on every render. Without `useMemo`, React would recalculate the value on every render, which could lead to performance issues. You should use it when you have computationally expensive operations that depend on specific props or state values, but be careful not to overuse it as the memoization itself has a small cost.
+`useMemo` **caches expensive computations** between re-renders. React only recalculates when dependencies change.
+
+Use it when the computation is expensive and the component re-renders frequently. Don't overuse it — memoization itself has a small cost.
 
 </td>
 <td>
@@ -108,25 +110,6 @@ Use `useMemo` when:
 Don't overuse it. Memoization has a small cost. Only apply it where you can measure a difference.
 
 </td>
-</tr>
-</table>
-
-<details>
-<summary><strong>See the same example in Zen mode</strong></summary>
-
-<br>
-
-<table>
-<tr>
-<th width="50%">Default Claude</th>
-<th width="50%">With Hyperfocus (zen)</th>
-</tr>
-<tr>
-<td>
-
-The `useMemo` hook in React is used to memoize expensive computations so that they are only recalculated when their dependencies change. This is particularly useful when you have a component that re-renders frequently but has some computation that doesn't need to run on every render. Without `useMemo`, React would recalculate the value on every render, which could lead to performance issues. You should use it when you have computationally expensive operations that depend on specific props or state values, but be careful not to overuse it as the memoization itself has a small cost.
-
-</td>
 <td>
 
 **TL;DR:** `useMemo` caches expensive computations. Only recalculates when dependencies change.
@@ -148,14 +131,9 @@ The `useMemo` hook in React is used to memoize expensive computations so that th
 </tr>
 </table>
 
-</details>
-
 ---
 
 ## Install
-
-> [!TIP]
-> The marketplace is the easiest way to install. Two commands and you're done.
 
 **Claude Code marketplace** (recommended):
 
@@ -207,14 +185,13 @@ You can also say **"focus mode"**, **"adhd mode"**, or **"adhd friendly"** in yo
 
 ## Persistent Mode
 
-> [!TIP]
-> Want hyperfocus on **every session** without typing `/hyperfocus` each time? Make it persistent.
+Want hyperfocus on **every session** without typing `/hyperfocus` each time? Make it persistent.
 
 ```
 /hyperfocus persistent
 ```
 
-This adds a hook to your Claude Code settings. Every future session auto-activates flow mode from the first response.
+This installs a `UserPromptSubmit` hook that re-injects the formatting rules on **every turn**. Zero drift — even in long conversations.
 
 | Command | What it does |
 |---|---|
@@ -222,21 +199,7 @@ This adds a hook to your Claude Code settings. Every future session auto-activat
 | `/hyperfocus persistent project` | Auto-activate for this project only |
 | `/hyperfocus disable` | Remove auto-activation |
 
-> [!NOTE]
-> Persistent mode uses a `UserPromptSubmit` hook that re-injects the formatting rules on every turn. This means zero drift — even in long conversations, the formatting stays consistent.
-
----
-
-## How It Works
-
-Hyperfocus is a **skill** — formatting rules that load into Claude's context when activated.
-
-No code. No build step. One file of instructions that reshapes how Claude writes prose.
-
-**Persistent mode** goes one step further: it installs a hook that re-injects the rules on every turn, so formatting never drifts — even in long sessions.
-
-> [!IMPORTANT]
-> Code blocks, error messages, commits, and PRs stay untouched. Only explanatory text gets restructured.
+Hyperfocus is a **skill** — one file of formatting rules that load into Claude's context. No code, no build step. Code blocks, commits, and PRs stay untouched. Only prose gets restructured.
 
 ---
 
@@ -253,8 +216,7 @@ No code. No build step. One file of instructions that reshapes how Claude writes
 
 ## The Research Behind It
 
-> [!NOTE]
-> These aren't opinions. Every rule in Hyperfocus comes from peer-reviewed research or published accessibility standards.
+Every rule in Hyperfocus comes from peer-reviewed research or published accessibility standards.
 
 | Principle | What the research says | Source |
 |---|---|---|
@@ -264,7 +226,17 @@ No code. No build step. One file of instructions that reshapes how Claude writes
 | **Visual hierarchy** | Good subheadings enable re-entry in under 2 seconds | [ATG Publishing](https://atgpublishing.com/adhd-publishing/) |
 | **Blank lines** | Walls of text trigger task abandonment | [ATG Level 1](https://atgpublishing.com/adhd-publishing/) |
 
-Full sources: [W3C COGA](https://www.w3.org/TR/coga-usable/) ・ [ATG ADHD Standards](https://atgpublishing.com/adhd-publishing/) ・ [WCAG Cognitive](https://www.w3.org/WAI/cognitive/) ・ [MDN Writing Guide](https://developer.mozilla.org/en-US/blog/technical-writing/) ・ [Readability Guidelines](https://readabilityguidelines.co.uk/clear-language/simple-sentences/)
+<details>
+<summary><strong>Full source list</strong></summary>
+
+- [W3C COGA — Making Content Usable for People with Cognitive and Learning Disabilities](https://www.w3.org/TR/coga-usable/) (2021)
+- [ATG Publishing — ADHD Friendly Publishing Standards](https://atgpublishing.com/adhd-publishing/)
+- [WCAG 2.2 — Cognitive Accessibility](https://www.w3.org/WAI/cognitive/) (2023)
+- [MDN — Creating Effective Technical Documentation](https://developer.mozilla.org/en-US/blog/technical-writing/)
+- [Readability Guidelines — Simple Sentences](https://readabilityguidelines.co.uk/clear-language/simple-sentences/) (Oxford Guide to Plain English)
+- [PMC — Constraints on Information Processing Capacity in Adults with ADHD](https://pmc.ncbi.nlm.nih.gov/articles/PMC6996017/) (2020)
+
+</details>
 
 ---
 
@@ -272,7 +244,7 @@ Full sources: [W3C COGA](https://www.w3.org/TR/coga-usable/) ・ [ATG ADHD Stand
 
 ADHD isn't a deficit to work around. **Hyperfocus is the superpower.**
 
-This plugin removes the friction that blocks it from engaging. When information is structured right, your brain locks in — not because it was forced to, but because nothing got in the way.
+This plugin removes the friction that blocks it. When information is structured right, your brain locks in — not because it was forced to, but because nothing got in the way.
 
 ---
 
