@@ -196,8 +196,32 @@ npx skills add nextor2k/hyperfocus -a github-copilot
 | **Activate** | `/hyperfocus` |
 | **Switch mode** | `/hyperfocus clean` or `flow` or `zen` |
 | **Turn off** | `stop hyperfocus` |
+| **Always on** | `/hyperfocus persistent` |
+| **Stop always on** | `/hyperfocus disable` |
 
 You can also say **"focus mode"**, **"adhd mode"**, or **"adhd friendly"** in your prompt.
+
+---
+
+## Persistent Mode
+
+> [!TIP]
+> Want hyperfocus on **every session** without typing `/hyperfocus` each time? Make it persistent.
+
+```
+/hyperfocus persistent
+```
+
+This adds a hook to your Claude Code settings. Every future session auto-activates flow mode from the first response.
+
+| Command | What it does |
+|---|---|
+| `/hyperfocus persistent` | Auto-activate globally (all projects) |
+| `/hyperfocus persistent project` | Auto-activate for this project only |
+| `/hyperfocus disable` | Remove auto-activation |
+
+> [!NOTE]
+> Persistent mode uses a `UserPromptSubmit` hook that re-injects the formatting rules on every turn. This means zero drift — even in long conversations, the formatting stays consistent.
 
 ---
 
@@ -205,7 +229,9 @@ You can also say **"focus mode"**, **"adhd mode"**, or **"adhd friendly"** in yo
 
 Hyperfocus is a **skill** — formatting rules that load into Claude's context when activated.
 
-No code. No hooks. No build step. One file of instructions that reshapes how Claude writes prose.
+No code. No build step. One file of instructions that reshapes how Claude writes prose.
+
+**Persistent mode** goes one step further: it installs a hook that re-injects the rules on every turn, so formatting never drifts — even in long sessions.
 
 > [!IMPORTANT]
 > Code blocks, error messages, commits, and PRs stay untouched. Only explanatory text gets restructured.

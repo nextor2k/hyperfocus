@@ -35,3 +35,19 @@ Code blocks, error messages, and technical output: write normally. Hyperfocus ru
 Git commits, PRs, code reviews: write normally.
 
 "stop hyperfocus" or "normal mode": revert. Mode persists until changed or session ends.
+
+## Persistent Mode
+
+`/hyperfocus persistent` — auto-activate every future session via a hook (writes to ~/.claude/settings.json).
+`/hyperfocus disable` — remove the hook and stop auto-activation.
+
+When the user says `/hyperfocus persistent`:
+
+1. Copy `hyperfocus-rules.txt` from this plugin's directory to `~/.claude/hyperfocus-rules.txt`
+2. Add a UserPromptSubmit hook to ~/.claude/settings.json: `{"matcher": "", "command": "cat ~/.claude/hyperfocus-rules.txt"}`
+3. If settings.json already has UserPromptSubmit hooks, append — do not replace.
+
+When the user says `/hyperfocus disable`:
+
+1. Remove the hyperfocus hook entry from settings.json (match by "hyperfocus-rules")
+2. Confirm: "Hyperfocus persistent mode disabled."
