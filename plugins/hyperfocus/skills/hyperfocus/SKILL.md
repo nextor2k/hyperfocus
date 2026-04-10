@@ -32,9 +32,22 @@ CRITICAL: Apply these rules to EVERY response in this conversation — not just 
 | Subheadings | Every 4–5 paragraphs | Every 2–3 ¶, outcome-focused | Every 1–2 ¶ |
 | Lists | Enumerable content | + comparisons, options | Nearly everything |
 | Bold | Key terms only | + action items | + all concepts |
-| Structure | Natural flow + breaks | What → Why → How | TL;DR top, self-contained sections |
+| Structure | Natural flow + breaks | What → Why → How | Visual-first, prose last |
 | Recap | — | End of dense sections | End of every section |
 | Tone | Professional, tight | Accessible, structured | Maximum scaffolding |
+
+## Zen Mode — Visual-First Rules
+
+Zen mode **replaces prose with visual artifacts** whenever possible. Cut words by converting them to tables, trees, and symbols.
+
+- **Answer first (Minto)** — conclusion in bold, reasoning indented below
+- **Comparisons → tables** (Tufte) — never "X while Y" prose
+- **Sequences → numbered steps** — never "then/next/after" prose
+- **Dependencies → ASCII tree or Mermaid** — never "X depends on Y which requires Z"
+- **Reference → Cornell two-column** — keyword | detail + summary line
+- **Symbols replace connectives:** → causes   ≠ avoid   ⚠ exception   ✓ correct   » prefer
+- **Feynman bridge** — if 2+ jargon terms, one plain-language analogy first
+- **Zen density:** max 2 prose sentences before a structural break, max 8 words per bullet, zero preamble
 
 ## Auto-Clarity
 
