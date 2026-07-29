@@ -47,7 +47,7 @@ Pick your level of structure. Switch anytime with `/hyperfocus clean|flow|zen`.
 
 ### Clean
 
-**For:** code reviews, quick answers, PR descriptions.
+**For:** quick answers, PR summaries, terse professional prose.
 
 Shorter paragraphs, front-loaded points, bullet lists. Professional tone stays intact.
 
@@ -142,6 +142,8 @@ claude plugin marketplace add nextor2k/hyperfocus
 claude plugin install hyperfocus@hyperfocus
 ```
 
+When installed from the marketplace, the command appears as `/hyperfocus:hyperfocus` in the marketplace UI, but bare `/hyperfocus` usually works in your prompt.
+
 **Or install the skill directly:**
 
 ```bash
@@ -171,27 +173,29 @@ npx skills add nextor2k/hyperfocus -a github-copilot
 
 ## Usage
 
-| Action | Command |
-|---|---|
-| **Activate** | `/hyperfocus` |
-| **Switch mode** | `/hyperfocus clean` or `flow` or `zen` |
-| **Turn off** | `stop hyperfocus` |
-| **Always on** | `/hyperfocus persistent` |
-| **Stop always on** | `/hyperfocus disable` |
+| Command | Effect | Scope |
+|---|---|---|
+| `/hyperfocus` | Activate in flow mode | This session only |
+| `/hyperfocus clean\|flow\|zen` | Switch mode | This session only |
+| `/hyperfocus off` or `stop hyperfocus` | Deactivate | This session only |
+| `/hyperfocus persistent [mode]` | Enable global auto-activation | All future sessions |
+| `/hyperfocus persistent project [mode]` | Enable project-scoped auto-activation | This project, all sessions |
+| `/hyperfocus disable` | Disable all auto-activation | Both scopes (if they exist) |
+| `/hyperfocus status` | Check session mode + persistent state | — |
 
-You can also say **"focus mode"**, **"adhd mode"**, or **"adhd friendly"** in your prompt.
+You can also say **"focus mode"**, **"adhd mode"**, or **"adhd friendly"** in your prompt to trigger activation.
 
 ---
 
 ## Persistent Mode
 
-Want hyperfocus on **every session** without typing `/hyperfocus` each time? Make it persistent.
+Want hyperfocus on **every session** without typing `/hyperfocus` each time?
 
 ```
 /hyperfocus persistent
 ```
 
-This installs a `UserPromptSubmit` hook that re-injects the formatting rules on **every turn**. Zero drift — even in long conversations.
+This enables a plugin-owned SessionStart hook that re-injects the formatting rules at the start of every session. Your settings.json is never modified — hyperfocus stores its state in a dedicated plugin data directory.
 
 | Command | What it does |
 |---|---|
@@ -199,7 +203,34 @@ This installs a `UserPromptSubmit` hook that re-injects the formatting rules on 
 | `/hyperfocus persistent project` | Auto-activate for this project only |
 | `/hyperfocus disable` | Remove auto-activation |
 
-Hyperfocus is a **skill** — one file of formatting rules that load into Claude's context. No code, no build step. Code blocks, commits, and PRs stay untouched. Only prose gets restructured.
+**How it works:** When you install hyperfocus from the Claude Code marketplace, the plugin ships a SessionStart hook that reads your persistent state at session start and re-injects the rules automatically. Your state lives in the plugin's data directory (separate from your settings). Uninstalling the plugin removes its state entirely.
+
+**Note:** Persistent mode requires a POSIX shell (`sh`) and is available on macOS, Linux, and WSL. Standalone skill installations (via `npx skills`) do not include persistent hooks.
+
+Hyperfocus is a **skill** — formatting rules that load into Claude's context. No code, no build step. Code blocks, commits, and PRs stay untouched. Only prose gets restructured.
+
+---
+
+## Capability Matrix
+
+| Feature | Marketplace Plugin | Standalone Skill |
+|---|---|---|
+| Session modes (clean/flow/zen) | ✓ | ✓ |
+| Persistent auto-activation | ✓ | — |
+| Project-scoped persistence | ✓ | — |
+| SessionStart hook | ✓ | — |
+
+---
+
+## Migrating from Hyperfocus ≤0.2
+
+If you're upgrading from an older version, you may need to clean up legacy configuration:
+
+1. **Remove old settings hook**: If your `~/.claude/settings.json` contains a `UserPromptSubmit` hook for hyperfocus-rules, delete it. The new version uses SessionStart instead.
+
+2. **Remove old rules file**: If `~/.claude/hyperfocus-rules.txt` exists, you can safely delete it. Rules are now managed by the plugin.
+
+After upgrading, persistent mode will work automatically with the new hook. No manual configuration needed.
 
 ---
 
@@ -216,7 +247,7 @@ Hyperfocus is a **skill** — one file of formatting rules that load into Claude
 
 ## The Research Behind It
 
-Every rule in Hyperfocus comes from peer-reviewed research or published accessibility standards.
+Hyperfocus is informed by cognitive-accessibility research and guidance.
 
 | Principle | What the research says | Source |
 |---|---|---|

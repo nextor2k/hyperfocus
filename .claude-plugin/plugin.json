@@ -1,6 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "hyperfocus",
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "displayName": "Hyperfocus",
   "description": "ADHD-friendly output formatting. Restructures responses with evidence-based cognitive accessibility: chunking, visual hierarchy, front-loaded key points, and progressive disclosure.",
   "author": {
     "name": "Nestor Magalhaes",
@@ -17,19 +19,5 @@
     "readability"
   ],
   "skills": "./skills/",
-  "interface": {
-    "displayName": "Hyperfocus",
-    "shortDescription": "ADHD-friendly output. Clear structure, visual hierarchy, front-loaded answers.",
-    "longDescription": "ADHD-optimized output formatting for Claude Code. Restructures responses with chunking, visual hierarchy, and progressive disclosure. Three modes: clean, flow, zen.",
-    "developerName": "Nestor Magalhaes",
-    "category": "Accessibility",
-    "capabilities": [
-      "Write"
-    ],
-    "websiteURL": "https://github.com/nextor2k/hyperfocus",
-    "defaultPrompt": [
-      "Use hyperfocus mode. Structure output for ADHD-friendly reading."
-    ],
-    "brandColor": "#7C3AED"
-  }
+  "hooks": "./hooks/hooks.json"
 }

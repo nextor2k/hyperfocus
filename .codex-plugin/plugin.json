@@ -1,6 +1,6 @@
 {
   "name": "hyperfocus",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ADHD-friendly output formatting. Restructures responses with evidence-based cognitive accessibility.",
   "author": {
     "name": "Nestor Magalhaes",
@@ -17,6 +17,7 @@
     "readability"
   ],
   "skills": "./skills/",
+  "hooks": "./hooks/hooks.json",
   "interface": {
     "displayName": "Hyperfocus",
     "shortDescription": "ADHD-friendly output. Clear structure, visual hierarchy, front-loaded answers.",

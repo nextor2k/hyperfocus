@@ -8,7 +8,7 @@
       "name": "hyperfocus",
       "source": {
         "source": "local",
-        "path": "./plugins/hyperfocus"
+        "path": "./"
       },
       "policy": {
         "installation": "AVAILABLE",
